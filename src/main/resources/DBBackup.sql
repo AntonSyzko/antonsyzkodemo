@@ -1,4 +1,4 @@
-create sequence APP_USER_seq;
+create sequence APP_USER_seq START WITH 1;
 
 create table APP_USER (
    id BIGINT NOT NULL DEFAULT NEXTVAL ('APP_USER_seq'),
@@ -46,8 +46,7 @@ VALUES ('DBA');
 
 /* Populate one Admin User which will further create other users for the application using GUI */
 INSERT INTO APP_USER(sso_id, password, first_name, last_name, email, phone,joining_date,description)
-VALUES ('test','$2a$10$mCblM7QrmnRn4nHQLo79o.062pzTIDYkHIRJ1VhIGFWhGGc3R4CYS
-', 'test','test','test@gmail.com','442071234337','2015-12-12','test admin message');
+VALUES ('test','$2a$10$zQt7pH/OV5cCgzCVaq.bdO5qnl6yx1gSm98jPhjDlPNkh2WP0YotS', 'test','test','test@gmail.com','442071234337','2015-12-12','test admin message');
 
 /* Populate JOIN Table */
 INSERT INTO APP_USER_USER_PROFILE (user_id, user_profile_id)
