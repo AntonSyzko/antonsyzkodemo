@@ -1,6 +1,9 @@
 package com.gmail.antonsyzko.doctoradministrationpanel.configuration;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.dialect.PostgreSQL82Dialect;
+import org.hibernate.type.descriptor.sql.BinaryTypeDescriptor;
+import org.hibernate.type.descriptor.sql.SqlTypeDescriptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -73,7 +76,16 @@ public class HibernateConfiguration {
 
 
 
+    public class PostgreSQLDialectCustom extends PostgreSQL82Dialect {
 
+        @Override
+        public SqlTypeDescriptor remapSqlTypeDescriptor(SqlTypeDescriptor sqlTypeDescriptor) {
+            if (sqlTypeDescriptor.getSqlType() == java.sql.Types.BLOB) {
+                return BinaryTypeDescriptor.INSTANCE;
+            }
+            return super.remapSqlTypeDescriptor(sqlTypeDescriptor);
+        }
+    }
 
 
 

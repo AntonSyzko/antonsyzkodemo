@@ -1,6 +1,7 @@
 package com.gmail.antonsyzko.doctoradministrationpanel.model;
 
 import javax.persistence.*;
+import java.sql.Blob;
 
 @Entity
 @Table(name="USER_DOCUMENT")
@@ -20,7 +21,7 @@ public class UserDocument {
 	
 	@Lob @Basic(fetch = FetchType.LAZY)
 	@Column(name="content", nullable=false)
-	private byte[] content;
+	private Blob content;
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "USER_ID")
@@ -59,11 +60,11 @@ public class UserDocument {
 		this.type = type;
 	}
 
-	public byte[] getContent() {
+	public Blob getContent() {
 		return content;
 	}
 
-	public void setContent(byte[] content) {
+	public void setContent(Blob content) {
 		this.content = content;
 	}
 

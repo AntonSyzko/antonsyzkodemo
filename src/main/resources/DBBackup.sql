@@ -80,7 +80,7 @@ create table USER_DOCUMENT(
    name  VARCHAR(100) NOT NULL,
    description TEXT ,
    type VARCHAR(100) NOT NULL,
-   content OID NOT NULL,
+   content BYTEA NOT NULL,
    PRIMARY KEY (id),
    CONSTRAINT document_user FOREIGN KEY (user_id) REFERENCES APP_USER (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
